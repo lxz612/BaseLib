@@ -1,8 +1,5 @@
 apply plugin: 'com.android.library'
 
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
-
 android {
     compileSdkVersion 26
     buildToolsVersion '26.0.2'
@@ -13,7 +10,7 @@ android {
         versionName "1.0"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [moduleName: project.getName()]
             }
         }
     }
@@ -28,26 +25,45 @@ android {
 }
 
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    // support库
-    api 'com.android.support:appcompat-v7:26.1.0'
-    api 'com.android.support:design:26.1.0'
-    api 'com.android.support:multidex:1.0.3'
-    api 'com.android.support:cardview-v7:26.1.0'
-    api 'com.android.support:recyclerview-v7:26.1.0'
-    api 'com.android.support.constraint:constraint-layout:1.0.2'
+    // ---- 官方support库 ----
+    compile 'com.android.support:support-v4:26.1.0'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:cardview-v7:26.1.0'
+    compile 'com.android.support:recyclerview-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
+    compile 'com.android.support:multidex:1.0.3'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:support-annotations:27.1.1'
 
-    // 三方库
+    // -------- 三方库 --------
     // 路由库
-    api 'com.alibaba:arouter-api:1.3.1'
+    compile 'com.alibaba:arouter-api:1.3.1'
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
+
+    // 总线
+    compile 'org.greenrobot:eventbus:3.1.1'
+
+    // Json解析
+    compile 'com.google.code.gson:gson:2.8.0'
+
+    // 权限
+    compile 'com.github.hotchemi:permissionsdispatcher:2.2.0'
+
+    // 日志
+    compile 'com.orhanobut:logger:1.8'
 }
 
-// 上传到Jcenter
-def siteURL = 'https://github.com/lxz612/BaseLib.git'      // 项目的主页   这个是说明，可随便填
+// -------------------------------------- 上传到JCenter ---------------------------------------------
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+version = "1.0.5"                                         // 每次发布都应该设置版本
+
+def siteURL = 'https://github.com/lxz612/BaseLib.git'     // 项目的主页  这个是说明，可随便填
 def gitURL = 'https://github.com/lxz612/BaseLib.git'      // Git仓库的url  这个是说明，可随便填
-group = "com.lxz.base"    // 这里是groupId ,必须填写  一般填你唯一的包名，对应com.squareup.okhttp3:okhttp:3.4.1中的com.squareup.okhttp3部分
+group = "com.lxz.baselib"                                 // 这里是groupId  必须填写 一般填你唯一的包名，对应com.squareup.okhttp3:okhttp:3.4.1中的com.squareup.okhttp3部分
+
 install {
     repositories.mavenInstaller {
         // This generates POM.xml with proper parameters
@@ -66,9 +82,10 @@ install {
                 }
                 developers {
                     developer {
-                        id 'lxz612'        //填写开发者的一些基本信息
-                        name 'lxz612'    //填写开发者的一些基本信息
-                        email 'lxz612@outlook.com'   //填写开发者的一些基本信息
+                        // 填写开发者的一些基本信息
+                        id 'lxz612'
+                        name 'lxz612'
+                        email 'lxz612@outlook.com'
                     }
                 }
                 scm {
@@ -85,6 +102,7 @@ task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
 }
+
 task javadoc(type: Javadoc) {
     options {
         encoding "UTF-8"
@@ -96,27 +114,29 @@ task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
+
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
+
 artifacts {
     archives javadocJar
     archives sourcesJar
 }
 
 Properties properties = new Properties()
-properties.load(project.file('local.properties').newDataInputStream())
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 bintray {
-    user = properties.getProperty("bintray.user")    //读取 local.properties 文件里面的 bintray.user
-    key = properties.getProperty("bintray.apikey")   //读取 local.properties 文件里面的 bintray.apikey
+    user = properties.getProperty("bintray.user")    // 读取 local.properties 文件里面的 bintray.user
+    key = properties.getProperty("bintray.apikey")   // 读取 local.properties 文件里面的 bintray.apikey
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "basesdk"    //发布到JCenter上的项目名字，必须填写，对应com.squareup.okhttp3:okhttp:3.4.1中的okhttp
-        publishVersion = '1.0.0'//发布到JCenter上的项目版本号
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
+        name = "basesdk"
+        // 发布到JCenter上的项目名字，必须填写，对应com.squareup.okhttp3:okhttp:3.4.1中的okhttp
+        websiteUrl = siteURL
+        vcsUrl = gitURL
         licenses = ["Apache-2.0"]
         publish = true
     }

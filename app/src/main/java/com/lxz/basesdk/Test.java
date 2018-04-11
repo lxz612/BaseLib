@@ -1,4 +1,4 @@
-package com.lxz.baselib;
+package com.lxz.basesdk;
 
 /**
  * Description:
