@@ -58,7 +58,7 @@ dependencies {
 // -------------------------------------- 上传到JCenter ---------------------------------------------
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-version = "1.0.5"                                         // 每次发布都应该设置版本
+version = "1.0.6"                                         // 每次发布都应该设置版本
 
 def siteURL = 'https://github.com/lxz612/BaseLib.git'     // 项目的主页  这个是说明，可随便填
 def gitURL = 'https://github.com/lxz612/BaseLib.git'      // Git仓库的url  这个是说明，可随便填
