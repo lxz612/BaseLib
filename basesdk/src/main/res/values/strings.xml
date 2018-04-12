@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BaseSDK</string>
+
+    <string name="loading_message">加载中...</string>
 </resources>
