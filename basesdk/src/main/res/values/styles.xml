@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--基础主题和样式-->
+
+    <!-- 基础主题 -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/color_black</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+    </style>
+
+    <!--NoActionBar基础主题-->
+    <style name="AppTheme.NoActionBar">
+        <!-- 隐藏ActionBar标题栏 -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <!-- 保留LoadingDialogTheme的样式(去掉阴影) -->
     <style name="Theme.Beibei.LoadingViewDialog" parent="Theme.AppCompat.Light.Dialog">
         <item name="windowActionBar">false</item>
@@ -10,4 +28,5 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+
 </resources>
