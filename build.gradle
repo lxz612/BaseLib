@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-
+    // Gradle插件脚本下载地址所在的仓库
     repositories {
         google()
         jcenter()
@@ -19,6 +19,7 @@ buildscript {
 }
 
 allprojects {
+    // 依赖库地址所在的仓库
     repositories {
         google()
         jcenter()
