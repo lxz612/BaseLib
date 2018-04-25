@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.lxz.basesdk.R;
 
 /**
- * Description:
+ * Description: Loading对话框
  * Created by xianzhen.li on 2018/4/12.
  */
 
@@ -37,7 +37,7 @@ public class LoadingDialog extends Dialog {
      * @param msg     对话框显示的文案.
      */
     public LoadingDialog(@NonNull Context context, String msg) {
-        this(context, R.style.Theme_Beibei_LoadingViewDialog);
+        this(context, R.style.Theme_MHealth_LoadingViewDialog);
         mLoadingMsg = msg;
     }
 
