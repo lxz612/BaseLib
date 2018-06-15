@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 控件选择颜色资源 -->
-    <color name="colorAccent">#E31436</color>
+    <!-- 控件选择颜色资源757575 -->
+    <color name="colorAccent">#5ABFF3</color>
     <!-- 导航栏颜色资源 -->
-    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimary">#fafafa</color>
     <!-- 通知栏颜色资源 -->
-    <color name="colorPrimaryDark">#AdAFB3</color>
+    <color name="colorPrimaryDark">#c7c7c7</color>
     <!-- 背景颜色资源 -->
-    <color name="windowBackground">#EFF1F4</color>
+    <color name="windowBackground">#f0f0f0</color>
 
     <!-- 其他颜色资源 -->
     <color name="color_black">#000000</color>

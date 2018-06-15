@@ -8,6 +8,8 @@ import android.text.TextUtils;
 import com.lxz.basesdk.R;
 import com.lxz.basesdk.views.loading.LoadingDialog;
 
+import org.greenrobot.eventbus.EventBus;
+
 /**
  * Description: Activity基类
  * Created by xianzhen.li on 2018/4/11.
@@ -18,6 +20,15 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().isRegistered(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 
     //---------------- LoadingDialog 统一入口 ----------------------//
@@ -38,6 +49,10 @@ public class BaseActivity extends AppCompatActivity {
 
     public void showLoadingDialog(int strId, boolean flag) {
         showLoadingDialog(getString(strId), flag);
+    }
+
+    public void showLoadingDailog(int resId, boolean flag) {
+        showLoadingDialog();
     }
 
     public void showLoadingDialog(String msg, boolean flag) {
