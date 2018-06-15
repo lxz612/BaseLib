@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/BaseLib.iml" filepath="$PROJECT_DIR$/.idea/BaseLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/BaseLib.iml" filepath="$PROJECT_DIR$/BaseLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/basesdk/basesdk.iml" filepath="$PROJECT_DIR$/basesdk/basesdk.iml" />
     </modules>

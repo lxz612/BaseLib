@@ -20,7 +20,7 @@ import com.lxz.basesdk.R;
 
 public class LoadingView extends FrameLayout {
 
-    private static final int DEFAULT_COLOR = 0xFFFF4965;
+    private static final int DEFAULT_COLOR = 0xFF3C2DCB;
 
     private CircleView mCircleView;
     private ImageView mIvLogo;
@@ -40,7 +40,7 @@ public class LoadingView extends FrameLayout {
         logoLp.gravity = Gravity.CENTER;
 
         mIvLogo = new ImageView(context);
-        mIvLogo.setImageResource(R.drawable.ic_loading_bei);
+        mIvLogo.setImageResource(R.drawable.ic_loading_fei);
         mIvLogo.setScaleType(ImageView.ScaleType.FIT_XY);
         addView(mIvLogo, logoLp);
 
@@ -60,7 +60,7 @@ public class LoadingView extends FrameLayout {
             mCircleView.setStrokeWidth(strokeWidth);
             float size = a.getDimension(R.styleable.LoadingView_loading_img_size, defaultLogoSize);
             setImgSize(size);
-            int imgSrc = a.getResourceId(R.styleable.LoadingView_loading_img_src, R.drawable.ic_loading_bei);
+            int imgSrc = a.getResourceId(R.styleable.LoadingView_loading_img_src, R.drawable.ic_loading_fei);
             setImgResource(imgSrc);
             a.recycle();
         }
